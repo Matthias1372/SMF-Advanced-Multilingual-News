@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "https://www.simplemachines.org/xml/package-info">
+<package-info xmlns="https://www.simplemachines.org/xml/package-info" xmlns:smf="https://www.simplemachines.org/">
+	<id>Matthias:advancedmultilingualnews</id>
+	<name>Advanced Multilingual News</name>
+	<version>1.0.12</version>
+	<type>modification</type>
+	<install for="2.1 - 2.1.99">
+		<require-file name="Sources/AMNMultilingualNews.php" destination="$sourcedir" />
+		<require-file name="Themes/default/AMNMultilingualNews.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/AMNMultilingualNews.english.php" destination="$languagedir" />
+		<require-file name="Themes/default/languages/AMNMultilingualNews.german.php" destination="$languagedir" />
+		<hook hook="integrate_manage_news" function="amn_multilingualnews_manage_news" file="$sourcedir/AMNMultilingualNews.php" />
+		<hook hook="integrate_load_theme" function="amn_multilingualnews_load_theme" file="$sourcedir/AMNMultilingualNews.php" />
+		<code>install.php</code>
+		<readme parsebbc="true">readme.txt</readme>
+	</install>
+
+	<uninstall for="2.1 - 2.1.99">
+		<code>uninstall.php</code>
+		<hook hook="integrate_load_theme" function="amn_multilingualnews_load_theme" file="$sourcedir/AMNMultilingualNews.php" reverse="true" />
+		<hook hook="integrate_manage_news" function="amn_multilingualnews_manage_news" file="$sourcedir/AMNMultilingualNews.php" reverse="true" />
+		<remove-file name="$sourcedir/AMNMultilingualNews.php" />
+		<remove-file name="$themedir/AMNMultilingualNews.template.php" />
+		<remove-file name="$languagedir/AMNMultilingualNews.english.php" />
+		<remove-file name="$languagedir/AMNMultilingualNews.german.php" />
+	</uninstall>
+</package-info>
